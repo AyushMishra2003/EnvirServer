@@ -87,8 +87,11 @@ try{
     if(!product){
         return next(new AppError("Product Not Found "))
     }
-}catch
+}catch(error){
+    return next(error.message)
 }
+}
+
 
 
 export {
