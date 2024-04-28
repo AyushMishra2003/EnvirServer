@@ -60,21 +60,23 @@ userSchema.pre('save',async function(next){
 
 
 userSchema.methods={
-    generateJWTToken:async function(){
-        return await jwt.sign(
-            {id:this._id,email:this.email,fullName:this.fullName,role:this.role},
-            process.env.SECRET,
-            {
-                expiresIn:'24h'
-            }
-        ) 
-    },
-    comparePassword:async function(plaintextPassword){
-        return await bcrypt.compare(plaintextPassword,this.password)
-     }
+  generateJWTToken: async function () {
+    return await jwt.sign(
+        {
+            id: this._id, email: this.email, role: this.role
+        },
+        process.env.SECRET,
+        {
+            expiresIn:10
+        }
+    )
+},
+comparePassword: async function (plainPassword) {
+  return await bcrypt.compare(plainPassword, this.password)
+}
 }
 
-const User=model("USET",userSchema)
+const User=model("EnvirUser",userSchema)
 
 
 export default User

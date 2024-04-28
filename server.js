@@ -2,7 +2,7 @@ import app from "./app.js";
 import ConnectionToDB from "./config/dbConnecction.js";
 import cloudinary from 'cloudinary'
 
-const PORT=process.env.PORT || 5000
+const PORT=8007
 
 cloudinary.v2.config({
     cloud_name:process.env.CLOUDINARY_CLOUD_NAME,

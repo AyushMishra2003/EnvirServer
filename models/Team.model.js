@@ -15,7 +15,7 @@ const TeamSchema=new Schema(
         type:String,
         required:true
        },
-       profession:{
+       teamProfession:{
         type:String,
         required:true
        }

@@ -94,23 +94,25 @@ const login=async(req,res,next)=>{
      return next(new AppError('All fields are required',400))
     }
     
-    // const user=await User.findOne({
-    //      email
-    // }).select('+password')
+    const user=await User.findOne({
+         email
+    }).select('+password')
 
-    // console.log(User);
-    const user=User.findOne(
-        { "email": email}
-    ).select('+password')
-    // .select('+password')
-    console.log(user);
+    console.log(User);
+    // const user = await User.findOne({})
+
+
+    // // .select('+password')
+    // console.log(user);
 
     const isPassword=await user.comparePassword(password)
     // const isPassword=await user.comparePassword(password)
     if(!user || !isPassword){
-     return next(new AppError('Email or Password not matched',400))
+     return next(new AppError("Email or Password not matched",400))
     }
+  
 
+    console.log("hyyy");
     const token=await user.generateJWTToken()
  
     user.password=undefined

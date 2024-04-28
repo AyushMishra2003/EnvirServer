@@ -2,19 +2,23 @@ import { Schema,model } from "mongoose";
 
 
 const FoodSchema=new Schema(
-    {
-       FoodImage:{
+    {  
+       foodName:{
+         type:String,
+         required:true
+       },
+
+       foodDescription:{
+          type:String,
+          required:true
+       },
+       foodImage:{
         public_id:{
             type:'String'
         },
         secure_url:{
             type:'String'
         }
-       },
-       
-       FoodName:{
-         type:String,
-         required:true
        }
     },
     {
